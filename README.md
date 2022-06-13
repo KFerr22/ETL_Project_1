@@ -29,6 +29,7 @@ Our datasets were sourced as CSV files from public platforms including Gun Viole
 
 Transformation:
 Prior to beginning the transformation, the datasets were reviewed to confirm which variables (columns) were relevant and required. This resulted in the following three tables with the following variables being created in a new database named insurance_db via Postgres-PgAdmin:
+
  ![database tables!](Images/db_tables.png)
 
 Mass Shooting-
@@ -40,19 +41,23 @@ The existing dataframe was updated and removed the unrequired columns of “Inci
 
 To further simplify the headings the existing “City or County” was renamed to “City”, # was renamed to number.
 The incident date was also formatted to ensure it would be displayed as a date time data type which resulted in the below final output:
+
  ![mass shooting post!](Images/ms_2.png)
 
 Population Distribution by Age-
 The population distribution dataset was obtained via three separate CSV files for each year and saved in a Resources folder. Unlike the Mass shooting dataset these CSV files did not have a date for each (row) of what year the data is relating to. As a result each CSV file had to be cleaned and transformed separately to include the year before being combined onto the one dataframe.
 When the data was read in, it had unrequired rows in row 0,1 3. See below:
+
  ![Population distributinon pre!](Images/pop_age_1.png)
  
 The 3 rows not required were removed utilising the ILOC function resulting in the below:
+
  ![Population distributinon post!](Images/pop_age_2.png)
  
 As mentioned above a new column for Year was required to ensure the correct dataset is being represented for each of the 3 files.
 The columns were renamed and reordered.
 Once each yearly CSV file completed the above, each yearly dataframe was combined into one dataframe and all the columns data types were converted to numeric with the exception of Location which remained as an object resulting in the below final output:
+
  ![Population distribution final!](Images/pop_age_3.png)
  
 Health Insurance Status-
@@ -60,8 +65,10 @@ The health insurance dataset like the Population distribution by Age above was o
 
 Load:
 The final step was to transfer our final output into a Database. As mentioned above in the Transformation step Postgres was utilised to create a new database. The following schema was applied to create the tables required in the database.
+
  ![db schema!](Images/load_1.png)
  
 The final outputs of each dataframe were specifically matched the columns in the table created in the database. SQLalchemy was then utilised to connect to Postgres and load to the database. A further query was run for each dataframe to ensure the database contained the outputs. See below example for upload of Mass Shooting dataset:
+
  ![Mass shooting db example](Images/load_2.png)
 
