@@ -1,3 +1,3 @@
 user = "postgres"
-password = "Elmatador1"
+password = "*******"
 db_name = "insurance_db"
